@@ -28,8 +28,7 @@ def kito_list(request):
 #     return render(rquest, 'comments.html',{'form':form,'total_comments':total_comments})
 @login_required
 def add_daykito(request):
-    request.user =user
-    profile = Profile.objects.filter(user=request.user)
+     
     if request.method == 'POST':
         form = AddKitoDay(request.POST, request.FILES)
         if form.is_valid():
@@ -39,12 +38,11 @@ def add_daykito(request):
             return redirect('/')
     else:
         form =AddKitoDay()
-    return render(request,'add-daykito.html',{'form':form,'profile':profile})
+    return render(request,'add-daykito.html',{'form':form })
 
 @login_required
 def add_haeder(request):
-    request.user =user
-    profile = Profile.objects.filter(user=request.user)
+     
     if request.method == 'POST':
         form = AddKitoDay(request.POST, request.FILES)
         if form.is_valid():
@@ -54,12 +52,11 @@ def add_haeder(request):
             return redirect('/')
     else:
         form =AddKitoDay()
-    return render(request,'add-header.html',{'form':form,'profile':profile})
+    return render(request,'add-header.html',{'form':form})
 
 @login_required
 def edit_header(request, slug):
-    request.user =user
-    profile = Profile.objects.filter(user=request.user)
+    
     edit_header = get_object_or_404(Header, post_slug=slug)
     if request.method == 'POST':
         form = AddCook(request.POST, instance = edit_header)
@@ -72,14 +69,13 @@ def edit_header(request, slug):
         form = AddCook(instance = edit_header)
     context = {
         'form': form,
-        'profile':profile
+         
     }
     return render(request, 'edit_header.html', context)
 
 @login_required
 def edit(request, slug):
-    request.user =user
-    profile = Profile.objects.filter(user=request.user)
+    
     edit_days = get_object_or_404(Kito, post_slug=slug)
     if request.method == 'POST':
         form = AddKitoDay(request.POST, instance = edit_days)
@@ -92,7 +88,7 @@ def edit(request, slug):
         form = AddKitoDay(instance = edit_days)
     context = {
         'form': form,
-        'profile':profile
+         
          
     }
     return render(request, 'create.html', context)
@@ -100,8 +96,7 @@ def edit(request, slug):
 
 @login_required 
 def add_cook(request):
-    request.user =user
-    profile = Profile.objects.get(user=request.user)
+     
     if request.method == 'POST':
         form = AddCook(request.POST, request.FILES)
         if form.is_valid():
@@ -115,8 +110,7 @@ def add_cook(request):
 
 @login_required
 def edit_cook(request, slug):
-    request.user =user
-    profile = Profile.objects.filter(user=request.user)
+     
     edit_cook = get_object_or_404(SameEat, post_slug=slug)
     if request.method == 'POST':
         form = AddCook(request.POST, instance = edit_cook)
@@ -129,7 +123,7 @@ def edit_cook(request, slug):
         form = AddCook(instance = edit_cook)
     context = {
         'form': form,
-        'profile':profile
+         
     }
     return render(request, 'edit_cook.html', context)
 
