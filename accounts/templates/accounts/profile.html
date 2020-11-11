@@ -1,0 +1,41 @@
+{% extends "base.html" %} 
+  {% block content%}
+
+<!-- Submit Ad -->
+ <div class="best-features about-features">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="section-heading">
+              <h2>Profile</h2>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="right-image">
+              <img src="{{ profile.image.url }}" alt="">
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="left-content">
+              <h4><h3>{{profile}}</h3></h4>
+              <p>{{profile.bio}}.</p>
+              <ul class="social-icons">
+                </li>
+                <li><a href="{% url 'accounts:profile_edit' profile.id %}">Edit</a></li>
+                <li><a href="{% url 'logout' %}">Logout</a></li>
+                <li><a href="{% url 'kito:add_haeder' %}">Add Post Heder</a></li>
+                <li><a href="{% url 'kito:add_cook' %}">Add Post Cook</a></li>
+                <li>
+
+                  
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+ 
+<!-- // Submit Ad -->
+{% endblock %}

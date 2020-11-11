@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap4 %}
+{% block content %}
+    <!-- ***** Preloader Start ***** -->
+   {% include 'navbar.html' %}
+<div class="container">
+        
+        <div class="row">
+            <div class="col-md-12 mb-5">
+                <div class="section-heading text-center">
+                    <h2><strong>Comments</strong></h2>
+                </div>
+            </div>
+            <div class="col-md-6 mb-5 mb-md-0">
+
+                <form action="." method="POST" class="comment-form" enctype="multipart/form-data">
+                    {% csrf_token %}
+                  
+                    <h2><strong>Comments</strong></h2>
+                 
+                    {% bootstrap_form form %}
+                         
+                    <input type="hidden" name="comment_id" value="{{comment.id}}" >
+                    <input type="submit" class="btn btn-dark  px-4 py-3" value="Submit">
+                </form>
+            </div>
+
+
+        </div>
+                </div>
+                
+
+
+{% endblock %}
+        

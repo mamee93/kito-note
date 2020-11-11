@@ -1,0 +1,26 @@
+ 
+    <!-- Header -->
+    
+
+    <!-- Page Content -->
+    <!-- Banner Starts Here -->
+
+    <div class="banner header-text">
+
+      <div class="owl-banner owl-carousel">
+        {%  for header in header%}
+        <div class="banner-item-01">
+          <div class="text-content">
+
+            <h4>{{header.title}}</h4>
+            <h2>{{header.content}} </h2>
+            <button><small> <a href="{% url 'kito:edit_header' header.post_slug %}">Edit Header</a></small></button>
+
+            
+          </div>
+        </div>
+      {% endfor %}
+      </div>
+    </div>
+
+        <!-- Header -->

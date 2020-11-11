@@ -1,0 +1,11 @@
+ul.social-icons li a {
+    width: 92px;
+    height: 50px;
+    display: inline-block;
+    line-height: 50px;
+    background-color: #eee;
+    color: #121212;
+    font-size: 11px;
+    text-align: center;
+    transition: all .3s;
+}

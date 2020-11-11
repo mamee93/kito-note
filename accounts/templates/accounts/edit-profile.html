@@ -1,0 +1,48 @@
+{% extends "base.html" %} {% load bootstrap4 %} {% block content%}
+
+<!-- Submit Ad -->
+
+
+
+ 
+
+
+
+    <div class="send-messageo">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 mt-5">
+            <div class="section-heading" style="margin-top: 70px;">
+              <h2>Edit Profile </h2>
+            </div>
+          </div>
+
+          <div class="col-md-8 m-auto">
+            <div class="contact-form">
+              <form id="contact" action="" method="post" action="" enctype="multipart/form-data">
+              	{% csrf_token %}
+              	{% bootstrap_form profileform  %}
+                {% bootstrap_form userform  %}
+                <div class="row">
+
+                  <div class="col-lg-12">
+                    <fieldset>
+{% buttons %}
+                      <button type="submit" id="form-submit" class="filled-button">Save Edit</button>
+{% endbuttons %}
+                    </fieldset>
+                  </div>
+
+                </div>
+              </form>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+
+   
+
+ 
+{% endblock %}
