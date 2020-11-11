@@ -6,7 +6,7 @@ from accounts.models import Profile
 # Create your views here.
 def kito_list(request):
     user=request.user
-    profile = Profile.objects.get(user=request.user)
+    profile = Profile.objects.filter(user=request.user)
     kito_post = Kito.objects.all()
     eat_cook = SameEat.objects.all()
     header = Header.objects.all()
@@ -29,7 +29,7 @@ def kito_list(request):
 @login_required
 def add_daykito(request):
     request.user =user
-    profile = Profile.objects.get(user=request.user)
+    profile = Profile.objects.filter(user=request.user)
     if request.method == 'POST':
         form = AddKitoDay(request.POST, request.FILES)
         if form.is_valid():
@@ -44,7 +44,7 @@ def add_daykito(request):
 @login_required
 def add_haeder(request):
     request.user =user
-    profile = Profile.objects.get(user=request.user)
+    profile = Profile.objects.filter(user=request.user)
     if request.method == 'POST':
         form = AddKitoDay(request.POST, request.FILES)
         if form.is_valid():
@@ -59,7 +59,7 @@ def add_haeder(request):
 @login_required
 def edit_header(request, slug):
     request.user =user
-    profile = Profile.objects.get(user=request.user)
+    profile = Profile.objects.filter(user=request.user)
     edit_header = get_object_or_404(Header, post_slug=slug)
     if request.method == 'POST':
         form = AddCook(request.POST, instance = edit_header)
@@ -79,7 +79,7 @@ def edit_header(request, slug):
 @login_required
 def edit(request, slug):
     request.user =user
-    profile = Profile.objects.get(user=request.user)
+    profile = Profile.objects.filter(user=request.user)
     edit_days = get_object_or_404(Kito, post_slug=slug)
     if request.method == 'POST':
         form = AddKitoDay(request.POST, instance = edit_days)
@@ -116,7 +116,7 @@ def add_cook(request):
 @login_required
 def edit_cook(request, slug):
     request.user =user
-    profile = Profile.objects.get(user=request.user)
+    profile = Profile.objects.filter(user=request.user)
     edit_cook = get_object_or_404(SameEat, post_slug=slug)
     if request.method == 'POST':
         form = AddCook(request.POST, instance = edit_cook)
