@@ -11,20 +11,18 @@ def kito_list(request):
     header = Header.objects.all()
    
     return render(request, 'kito_list.html',{'kito_post':kito_post,'eat_cook':eat_cook,'header':header})
-# def comments(request,id):
-#     comments = Comments.objects.filter(Kito=Kito)
-#     total_comments = comments.count()
-#     if request.method == 'POST':
-#         form = CommentForm(request.POST)
-#         if form.is_valid():
-#             myform = form.save(commit=False)
-#             myform.parent=comment_qs
-#             myform.user = request.user
-#             myform.Kito = Kito
-#             myform.save()
-#     else:
-#         form = CommentForm()
-#     return render(rquest, 'comments.html',{'form':form,'total_comments':total_comments})
+def deleteList(request,slug):
+    item = Kito.objects.get(post_slug=slug)
+
+    if request.method == 'POST':
+        item.delete()
+        return redirect('/')
+    context ={'item':item}
+    return render(request,'delete_list.html',context)
+
+
+
+
 @login_required
 def add_daykito(request):
      
