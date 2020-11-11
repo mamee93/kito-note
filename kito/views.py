@@ -5,13 +5,12 @@ from django.contrib.auth.decorators import login_required
 from accounts.models import Profile
 # Create your views here.
 def kito_list(request):
-    user=request.user
-    profile = Profile.objects.filter(user=request.user)
+    
     kito_post = Kito.objects.all()
     eat_cook = SameEat.objects.all()
     header = Header.objects.all()
    
-    return render(request, 'kito_list.html',{'kito_post':kito_post,'eat_cook':eat_cook,'header':header,'profile':profile})
+    return render(request, 'kito_list.html',{'kito_post':kito_post,'eat_cook':eat_cook,'header':header})
 # def comments(request,id):
 #     comments = Comments.objects.filter(Kito=Kito)
 #     total_comments = comments.count()
