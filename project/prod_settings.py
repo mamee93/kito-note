@@ -1,6 +1,15 @@
 
 import os
+import dj_databas_url
 from .settings import *
 SECRET_KEY = os.environ.get('SECRET_KEY')
 DEBUG = True
 ALLOWED_HOSTS = ['kito-note.herokuapp.com']
+
+
+DATABASES = {
+    'default': dj_databas_url.config(.os.environ.get('DATABASE_URL'))
+
+    
+
+}
