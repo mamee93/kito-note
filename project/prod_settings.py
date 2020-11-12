@@ -8,7 +8,7 @@ ALLOWED_HOSTS = ['kito-note.herokuapp.com']
 
 
 DATABASES = {
-    'default': dj_databas_url.config(.os.environ.get('DATABASE_URL'))
+    'default': dj_databas_url.config(default=os.environ.get('DATABASE_URL'))
 
     
 
