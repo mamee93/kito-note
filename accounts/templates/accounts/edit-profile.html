@@ -1,13 +1,5 @@
 {% extends "base.html" %} {% load bootstrap4 %} {% block content%}
 
-<!-- Submit Ad -->
-
-
-
- 
-
-
-
     <div class="send-messageo">
       <div class="container">
         <div class="row">
@@ -19,7 +11,7 @@
 
           <div class="col-md-8 m-auto">
             <div class="contact-form">
-              <form id="contact" action="" method="post" action="" enctype="multipart/form-data">
+              <form id="contact" action="" method="post" enctype="multipart/form-data">
               	{% csrf_token %}
               	{% bootstrap_form profileform  %}
                 {% bootstrap_form userform  %}
@@ -42,7 +34,5 @@
       </div>
     </div>
 
-   
 
- 
 {% endblock %}

@@ -15,6 +15,7 @@
             <h4>{{header.title}}</h4>
             <h2>{{header.content}} </h2>
             <button><small> <a href="{% url 'kito:edit_header' header.post_slug %}">Edit Header</a></small></button>
+            <button><small> <a href="{% url 'kito:delete_header' header.post_slug %}">Delete Header</a></small></button>
 
             
           </div>

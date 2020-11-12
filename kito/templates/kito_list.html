@@ -76,6 +76,7 @@
             <h4>{{eat.title}}</h4>
             <h2>{{eat.content}}</h2>
              <button><small> <a href="{% url 'kito:edit_cook' eat.post_slug %}">Edit Cook</a></small></button>
+             <button><small> <a href="{% url 'kito:delete_cook' eat.post_slug %}">Delete Cook</a></small></button>
           </div>
         </div>
          {% endfor %}

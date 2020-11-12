@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect,get_object_or_404,Http404
 from  .models import Kito,SameEat,Header,Comments
-from  .forms import AddKitoDay,AddCook,CommentForm
+from  .forms import AddKitoDay,AddCook,CommentForm,AddHeader
 from django.contrib.auth.decorators import login_required
 from accounts.models import Profile
 # Create your views here.
@@ -41,14 +41,14 @@ def add_daykito(request):
 def add_haeder(request):
      
     if request.method == 'POST':
-        form = AddKitoDay(request.POST, request.FILES)
+        form = AddHeader(request.POST, request.FILES)
         if form.is_valid():
             myform = form.save(commit=False)
             myform.owner = request.user
             myform.save()
             return redirect('/')
     else:
-        form =AddKitoDay()
+        form =AddHeader()
     return render(request,'add-header.html',{'form':form})
 
 @login_required
@@ -56,19 +56,28 @@ def edit_header(request, slug):
     
     edit_header = get_object_or_404(Header, post_slug=slug)
     if request.method == 'POST':
-        form = AddCook(request.POST, instance = edit_header)
+        form = AddHeader(request.POST, instance = edit_header)
         if form.is_valid():
             new_form = form.save(commit=False)
             new_form.userheader = request.user
             new_form.save()
             return  redirect('/')
     else:
-        form = AddCook(instance = edit_header)
+        form = AddHeader(instance = edit_header)
     context = {
         'form': form,
          
     }
     return render(request, 'edit_header.html', context)
+@login_required
+def delete_header(request,slug):
+    item = Header.objects.get(post_slug=slug)
+
+    if request.method == 'POST':
+        item.delete()
+        return redirect('/')
+    context ={'item':item}
+    return render(request,'delete_header.html',context)
 
 @login_required
 def edit(request, slug):
@@ -125,10 +134,11 @@ def edit_cook(request, slug):
     return render(request, 'edit_cook.html', context)
 
 @login_required
-def list_delete(request, slug):
+def delete_cook(request,slug):
+    item = Header.objects.get(post_slug=slug)
 
-    post = get_object_or_404(Kito,post_slug=slug)
-    if request.user != post.owner:
-        raise Http404()
-    post.delete()
-    return redirect('kito:kito_list')
+    if request.method == 'POST':
+        item.delete()
+        return redirect('/')
+    context ={'item':item}
+    return render(request,'delete_cook.html',context)
