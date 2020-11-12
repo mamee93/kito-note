@@ -18,7 +18,9 @@
           {% for post in kito_post %}
           <div class="col-md-4">
             <div class="product-item">
-              <a href="#"><img src="{{ post.image.url }}" alt=""></a>
+              
+              <a href="#"><img src="{{ post.img.url }}" alt=""></a>
+
               <div class="down-content">
                 <a href="{% url 'kito:add_daykito' %}"><h4>{{post.title}}</h4></a>
                 <h6>Kg{{post.Kg}}</h6>

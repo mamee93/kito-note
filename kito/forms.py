@@ -4,7 +4,7 @@ from .models import  Kito,SameEat,Header,Comments
 class AddKitoDay(forms.ModelForm):
     class Meta:
         model= Kito
-        fields = ['title','image','content','Kg','day']
+        fields = ['title','img','content','Kg','day']
 
 class AddCook(forms.ModelForm):
     class Meta:

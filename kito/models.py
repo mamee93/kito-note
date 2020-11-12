@@ -30,11 +30,17 @@ class Kito(models.Model):
     created_at  = models.DateTimeField(auto_now=True) 
     post_slug   = models.SlugField(blank=True, null=True)
     update_at   = models.DateTimeField(auto_now_add=True)
-    image       = models.ImageField(upload_to='kito/')
+    img       = models.ImageField(upload_to='kito/')
     content     = models.TextField(max_length=1000)
     Kg          = models.IntegerField(default=1)
     day         = models.IntegerField(default=1)
-    
+
+    @property
+    def get_photo_url(self):
+        if self.img and hasattr(self.img, 'url'):
+            return self.img.url
+        else:
+            return "/static/img/1.jpg"
     def save(self, *args, **kwargs):
 
         self.post_slug = self.title
