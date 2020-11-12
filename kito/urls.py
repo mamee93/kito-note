@@ -5,7 +5,7 @@ app_name='kito'
 
 urlpatterns = [
 
-    path('',views.kito_list,name='kito_list'),
+    path('kito_list',views.kito_list,name='kito_list'),
     path('add', views.add_daykito, name='add_daykito'),
     path('<str:slug>/edit',views.edit,name='edit'),
     path('list_delete/<str:slug>',views.deleteList,name='list_delete'),

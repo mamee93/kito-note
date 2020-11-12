@@ -17,10 +17,15 @@ from django.contrib import admin
 from django.urls import path,include
 from django.conf import settings
 from django.conf.urls.static import static
+from django.shortcuts import redirect
+
+def home(request):
+    return redirect('kito:kito_list')
 
 urlpatterns = [
 	path('accounts/', include('django.contrib.auth.urls')),
 	path('accounts/', include('accounts.urls',namespace='accounts')),
+    path('',  home, name='home'),
     path('admin/', admin.site.urls),
     path('', include('kito.urls', namespace='kito')),
 ]
