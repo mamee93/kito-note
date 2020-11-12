@@ -3,7 +3,7 @@ import os
 import dj_databas_url
 from .settings import *
 SECRET_KEY = os.environ.get('SECRET_KEY')
-DEBUG = True
+DEBUG = False
 ALLOWED_HOSTS = ['kito-note.herokuapp.com']
 
 
